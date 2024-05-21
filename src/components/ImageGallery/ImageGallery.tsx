@@ -1,7 +1,20 @@
+import ImageCard from '../ImageCard/ImageCard';
 import css from './ImageGallery.module.css';
-import { ImageCard } from "../ImageCard/ImageCard";
 
-export const ImageGallery = ({ items, onImageClick }) => {
+interface Image {
+  id: string;
+  urls:{
+    small:string;
+  };
+  alt_description: string;
+}
+
+interface ImageGalleryProps {
+  items: Image[];
+  onImageClick: (item: Image) => void;
+}
+
+const ImageGallery: React.FC<ImageGalleryProps> = ({ items, onImageClick }) => {
   return (
     <div className={css.gallery}>
       <ul className={css.galleryList}>
@@ -14,3 +27,5 @@ export const ImageGallery = ({ items, onImageClick }) => {
     </div>
   );
 };
+
+export default ImageGallery

@@ -1,7 +1,18 @@
 
 import css from './ImageCard.module.css';
 
-export const ImageCard = ({ item, onClick}) => {
+interface Image {
+    urls: {
+        small: string;
+    };
+alt_description: string;
+}
+
+interface ImageCardProps {
+    item: Image;
+    onClick: (item: Image) => void;
+}
+ const ImageCard: React.FC<ImageCardProps> = ({ item, onClick}) => {
     const handleClick = () => {
         onClick(item);
     };
@@ -17,3 +28,4 @@ export const ImageCard = ({ item, onClick}) => {
         </div>
     );
 }  
+export default ImageCard;

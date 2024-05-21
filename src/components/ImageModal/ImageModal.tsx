@@ -3,7 +3,21 @@ import Modal from 'react-modal';
 import css from './ImageModal.module.css';
 import { IoIosCloseCircle } from 'react-icons/io';
 
-const customStyles = {
+
+interface Image {
+  urls:{
+    regular:string;
+  };
+  alt_description: string;
+
+}
+interface ImageModalProps {
+  isOpen: boolean;
+  image:Image | null;
+  onRequestClose: () => void;
+}
+
+const customStyles:Modal.Styles = {
   content: {
     padding: '0',
     background: 'unset',
@@ -18,7 +32,7 @@ const customStyles = {
   },
 };
 
-export const ImageModal = ({ isOpen, image, onRequestClose }) => {
+const ImageModal: React.FC<ImageModalProps> = ({ isOpen, image, onRequestClose }) => {
   if (!image) {
     return null;
   }
@@ -44,3 +58,5 @@ export const ImageModal = ({ isOpen, image, onRequestClose }) => {
     </Modal>
   );
 };
+
+export default ImageModal;
